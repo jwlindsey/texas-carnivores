@@ -1,1 +1,9 @@
-<h1>Hello World!</h1>
+<% @shops.each do |shop| %>
+  <div>
+    <h1><%= shop.name %></h1><br />
+    <i><%= shop.address %></i><br />
+    <p><%= shop.description %></p><br />
+  </div>
+
+  <hr />
+<% end %>
