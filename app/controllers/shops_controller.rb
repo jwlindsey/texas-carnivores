@@ -1,4 +1,6 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @shops = Shop.all
     @shops = Shop.order("created_at DESC").paginate(page: params[:page], per_page:5)
@@ -9,7 +11,7 @@ class ShopsController < ApplicationController
   end
 
   def create
-    Shop.create(shop_params)
+    current_user.shops.create(shop_params)
     redirect_to root_path
   end
 

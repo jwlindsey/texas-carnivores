@@ -4,6 +4,10 @@
     <h1><%= shop.name %></h1><br />
     <i><%= shop.address %></i><br /><br />
     <p><%= shop.description %></p><br />
+
+    <% if shop.user.present? %>
+      <small><%= shop.user.email %></small>
+    <% end %>
   </div>
 
   <hr />
