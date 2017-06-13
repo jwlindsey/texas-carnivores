@@ -65,3 +65,5 @@ end
 
 # Using Simple form for easy build of forms
 gem 'simple_form'
+# Adding font-awesome capability
+gem "font-awesome-rails"
