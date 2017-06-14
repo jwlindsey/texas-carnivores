@@ -11,8 +11,12 @@ class ShopsController < ApplicationController
   end
 
   def create
-    current_user.shops.create(shop_params)
-    redirect_to root_path
+    @shop = current_user.shops.create(shop_params)
+    if @shop.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -34,7 +38,11 @@ class ShopsController < ApplicationController
     end
 
     @shop.update_attributes(shop_params)
-    redirect_to root_path
+    if @shop.valid?
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
