@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
 
   def index
     @shops = Shop.all
@@ -16,6 +16,10 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @shop = Shop.find(params[:id])
+  end
+
+  def edit
     @shop = Shop.find(params[:id])
   end
 
