@@ -23,6 +23,12 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
 
+  def update
+    @shop = Shop.find(params[:id])
+    @shop.update_attributes(shop_params)
+    redirect_to root_path
+  end
+
   private
 
   def shop_params
