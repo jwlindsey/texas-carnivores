@@ -15,6 +15,10 @@ class ShopsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @shop = Shop.find(params[:id])
+  end
+
   private
 
   def shop_params
