@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @shops = Shop.all
@@ -21,16 +21,28 @@ class ShopsController < ApplicationController
 
   def edit
     @shop = Shop.find(params[:id])
+
+    if @shop.user != current_user
+      return render text: 'Not Allowed', status: :forbidden
+    end
   end
 
   def update
     @shop = Shop.find(params[:id])
+    if @shop.user != current_user
+      return render text: 'Not Allowed', status: :forbidden
+    end
+
     @shop.update_attributes(shop_params)
     redirect_to root_path
   end
 
   def destroy
     @shop = Shop.find(params[:id])
+    if @shop.user =! current_user
+      return render text: 'Not Allowed', status: :forbidden
+    end
+
     @shop.destroy
     redirect_to root_path
   end
