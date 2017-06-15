@@ -69,3 +69,5 @@ gem 'simple_form'
 gem "font-awesome-rails"
 # Using Devise for user authentication
 gem 'devise'
+# Use to convert and address to latitude and longitude
+gem 'geocoder'
