@@ -3,6 +3,37 @@
   <i><%= @shop.address %></i>
   <br /><br />
   <p><%= @shop.description %></p>
+
+<% if @shop.latitude.present? && @shop.longitude.present? %>
+
+  <script>
+
+    function initMap() {
+      var myLatLng = {lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: myLatLng
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+  </script>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXMDDY6KGBvm5FOYqXBCiH0D9zhv7DEuE&callback=initMap">
+  </script>
+
+  <div id="map"></div>
+
+<% end %>
+
+  <br />
+
   <div class="float-right">
     <% if current_user && current_user == @shop.user %>
       <%= link_to 'Edit', edit_shop_path(@shop), class: 'btn btn-primary' %>
