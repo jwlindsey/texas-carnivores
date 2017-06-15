@@ -71,3 +71,5 @@ gem "font-awesome-rails"
 gem 'devise'
 # Use to convert and address to latitude and longitude
 gem 'geocoder'
+# Use for api protection
+gem 'figaro'
