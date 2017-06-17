@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @shop = Shop.find(params[:shop_id])
-    @shop = comments.create(comment_params.merge(user: current_user))
+    @shop.comments.create(comment_params.merge(user: current_user))
     redirect_to shop_path(@shop)
   end
 
