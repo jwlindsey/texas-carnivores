@@ -73,3 +73,5 @@ gem 'devise'
 gem 'geocoder'
 # Use for api protection
 gem 'figaro'
+# Use for photo uploading
+gem 'carrierwave', '~> 1.0'
