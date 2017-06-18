@@ -2,7 +2,7 @@ class ShopsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @shops = Shop.all
+    #@shops = Shop.all
     @shops = Shop.order("created_at DESC").paginate(page: params[:page], per_page:5)
   end
 
@@ -22,6 +22,7 @@ class ShopsController < ApplicationController
   def show
     @shop = Shop.find(params[:id])
     @comment = Comment.new
+    @photo = Photo.new
   end
 
   def edit
