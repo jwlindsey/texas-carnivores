@@ -75,3 +75,5 @@ gem 'geocoder'
 gem 'figaro'
 # Use for photo uploading
 gem 'carrierwave', '~> 1.0'
+# Use for Amazon communication
+gem 'fog-aws'
