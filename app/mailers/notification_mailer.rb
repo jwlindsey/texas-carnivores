@@ -1,8 +1,10 @@
 class NotificationMailer < ApplicationMailer
   default from: "no-reply@texascarnivores.com"
 
-  def comment_added
-    mail(to: "j.w.lindsey1986@gmail.com",
-          subject: "A comment has been added to your shop")
+  def comment_added(comment)
+    @shop = comment.shop
+    @shop_owner = @shop.user
+    mail(to: @shop_owner.email,
+          subject: "A comment has been added to #{@shop.name}")
   end
 end
