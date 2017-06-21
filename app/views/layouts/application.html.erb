@@ -10,68 +10,107 @@
 
   <body>
     <!-- Navbar Start -->
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <%= link_to 'Texas Carnivores', root_path, class: 'navbar-brand' %>
+    <div id="flex-content-container">
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= link_to 'Texas Carnivores', root_path, class: 'navbar-brand' %>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'About us', about_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Contact Us', '#', class: 'nav-link' %>
-          </li>
-
-          <div class="dropdown show">
-            <li class="nav-item">
-              <%= link_to 'Local Shops', '#', class: 'nav-link dropdown-toggle', id: "dropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <%= link_to ' Shops Page', root_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
-                    <% if user_signed_in? %>
-                      <%= link_to ' New Shop', new_shop_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
-                    <% end %>
-                </div>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item">
+              <%= link_to 'About us', about_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Contact Us', '#', class: 'nav-link' %>
+            </li>
+
+            <div class="dropdown show">
+              <li class="nav-item">
+                <%= link_to 'Local Shops', '#', class: 'nav-link dropdown-toggle', id: "dropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <%= link_to ' Shops Page', root_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
+                      <% if user_signed_in? %>
+                        <%= link_to ' New Shop', new_shop_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
+                      <% end %>
+                  </div>
+              </li>
+            </div>
+
+            <li class="nav-item">
+              <%= link_to 'FAQ', faq_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Southern Growing Tips', '#', class: 'nav-link' %>
+            </li>
+          </ul>
+          <% if user_signed_in? %>
+            <form class="form-inline my-2 my-lg-0">
+              <%= link_to 'User Profile', user_path(current_user), class: 'nav-link' %>
+            </form>
+            <form class="form-inline my-2 my-lg-0">
+              <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-success my-2 my-sm-0' %>
+            </form>
+          <% else %>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search">
+              <%= link_to 'Log in', new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
+              <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
+            </form>
+          <% end %>
+        </div>
+      </nav>
+      <!-- Navbar End -->
+
+      <% if notice.present? %>
+        <p class="alert alert-info"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+    <div id="footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 col-sm-3">
+              <h5>About</h5>
+              <%= link_to 'Team', team_path %>
+              <br/>
+              <%= link_to 'Careers', career_path %>
+              <br/>
+              <%= link_to 'Privacy Policy', privacy_path %>
+            </div>
+            <div class="col-12 col-sm-3">
+              <h5>Contact</h5>
+              texascarnivores@gmail.com
+              <br/>
+              Austin, Tx
+            </div>
+            <div class="col-12 col-sm-3 social">
+              <h5>Social</h5>
+              <br/>
+              <%= link_to 'https://github.com/jwlindsey' do %>
+                <span class="fa fa-github-square fa-2x social-button"></span>
+              <% end %>
+              <%= link_to 'https://www.facebook.com/TexasCPC/' do %>
+                <span class="fa fa-facebook-square fa-2x social-button">
+              <% end %>
+              <%= link_to 'https://twitter.com/TexasCPC' do %>
+                <span class="fa fa-twitter-square fa-2x social-button"></span>
+              <% end %>
+              <%= link_to 'https://plus.google.com/u/1/106140595588716345357' do %>
+                <span class="fa fa-google-plus-square fa-2x social-button"></span>
+              <% end %>
+            </div>
           </div>
-
-          <li class="nav-item">
-            <%= link_to 'FAQ', faq_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Southern Growing Tips', '#', class: 'nav-link' %>
-          </li>
-        </ul>
-        <% if user_signed_in? %>
-          <form class="form-inline my-2 my-lg-0">
-            <%= link_to 'User Profile', user_path(current_user), class: 'nav-link' %>
-          </form>
-          <form class="form-inline my-2 my-lg-0">
-            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-success my-2 my-sm-0' %>
-          </form>
-        <% else %>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <%= link_to 'Log in', new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
-            <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
-          </form>
-        <% end %>
-      </div>
-    </nav>
-    <!-- Navbar End -->
-
-    <% if notice.present? %>
-      <p class="alert alert-info"><%= notice %></p>
-    <% end %>
-    <% if alert.present? %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
-    <%= yield %>
+        </div>
+    </div>
   </body>
 </html>
