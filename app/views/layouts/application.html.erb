@@ -26,12 +26,39 @@
           <li class="nav-item">
             <%= link_to 'Contact Us', '#', class: 'nav-link' %>
           </li>
-          <li class="nav-item">
+
+
+          <!--<li class="nav-item">
             <%= link_to 'Local Shops', root_path, class: 'nav-link' %>
               <% if user_signed_in? %>
+
                 <%= link_to ' New Shop', new_shop_path, class: 'nav-link dropdown-item fa fa-plus-circle' %>
+
               <% end %>
-          </li>
+          </li>-->
+
+          <div class="dropdown show">
+            <li class="nav-item">
+              <%= link_to 'Local Shops', '#', class: 'nav-link dropdown-toggle', id: "dropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <%= link_to ' Shops Page', root_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
+                        <% if user_signed_in? %>
+                          <%= link_to ' New Shop', new_shop_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
+                        <% end %>
+                    </div>
+            </li>
+          </div>
+
+          <!--<div class="dropdown show">
+            <li class="nav-item dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Local Shops
+            </li>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li class="dropdown-item nav-link fa fa-plus-circle" href="#">Create New Shop</li>
+            </div>
+          </div>-->
+
           <li class="nav-item">
             <%= link_to 'FAQ', '#', class: 'nav-link' %>
           </li>
