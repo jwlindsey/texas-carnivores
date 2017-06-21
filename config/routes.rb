@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   resources :index do
     resources :photos, only: :show
   end
+  root "static_pages#index"
+    get 'privacy', to: 'static_pages#privacy'
+    get 'team', to: 'static_pages#team'
+    get 'career', to: 'static_pages#career'
+    get 'about', to: 'static_pages#about'
+    get 'faq', to: 'static_pages#faq'
 end
