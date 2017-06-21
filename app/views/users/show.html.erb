@@ -1,0 +1,70 @@
+<div class="booyah-box">
+  <div class="row">
+    <div class='col-4'>
+      <%= image_tag 'user.png' %>
+    </div>
+
+    <div class='col-8'>
+      <h1><%= @user.email %></h1>
+      <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+      <h4><%= @user.comments.count %> total comments</h4>
+      <h4><%= @user.comments.where(rating: '5_stars').count %> total reviews</h4>
+    </div>
+  </div>
+</div>
+
+<div class='clear'></div>
+<br /><br />
+
+<div class="booyah-box col-10 offset-1">
+  <h1 class='text-center'>My Comments</h1>
+  <br /><br />
+  <div class="row">
+    <% @user.comments.each do |comment| %>
+    <div class="col-12 col-sm-6">
+      <h2 class='text-center'><%= link_to comment.shop.name, shop_path(comment.shop) %></h2>
+      <blockquote>
+        <% if comment.humanized_rating.present? %>
+          <b><%= comment.humanized_rating %></b> -
+        <% end %>
+        <%= comment.message %>
+        <small><%= comment.user.email %></small>
+      </blockquote>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class='clear'></div>
+<br /><br />
+
+<div class="booyah-box col-10 offset-1">
+  <h2 class='text-center'>My Shops</h2>
+  <br /><br />
+  <div class="row">
+    <% @user.shops.each do |shop| %>
+      <div class="booyah-box col-10 offset-1">
+        <h1><%= link_to shop.name, shop_path(shop) %></h1>
+        <i><%= shop.address %></i><br /><br />
+        <p><%= shop.description %></p><br />
+        <% if shop.photos.present? %>
+          <%= image_tag shop.photos.last.picture, class:"image-box" %>
+        <% end %>
+        <% if shop.user.present? %>
+          <small><%= shop.user.email %></small>
+        <% end %>
+      <% if shop.comments.present? %>
+        <div class="col-12">
+          <blockquote>
+            <% if shop.comments.last.humanized_rating.present? %>
+              <b><%= shop.comments.last.rating %></b> -
+            <% end %>
+            <%= shop.comments.last.message %>
+            <small><%= shop.comments.last.user.email %></small>
+          </blockquote>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

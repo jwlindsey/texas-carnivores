@@ -38,13 +38,11 @@
           <li class="nav-item">
             <%= link_to 'Southern Growing Tips', '#', class: 'nav-link' %>
           </li>
-          <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to 'User Profile', '#', class: 'nav-link' %>
-            </li>
-          <% end %>
         </ul>
         <% if user_signed_in? %>
+          <form class="form-inline my-2 my-lg-0">
+            <%= link_to 'User Profile', user_path(current_user), class: 'nav-link' %>
+          </form>
           <form class="form-inline my-2 my-lg-0">
             <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-success my-2 my-sm-0' %>
           </form>
