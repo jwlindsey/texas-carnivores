@@ -33,7 +33,7 @@
               <li class="nav-item">
                 <%= link_to 'Local Shops', '#', class: 'nav-link dropdown-toggle', id: "dropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <%= link_to ' Shops Page', root_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
+                    <%= link_to ' Shops Page', shops_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
                       <% if user_signed_in? %>
                         <%= link_to ' New Shop', new_shop_path, class: 'dropdown-item nav-item fa fa-plus-circle' %>
                       <% end %>
