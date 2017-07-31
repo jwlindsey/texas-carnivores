@@ -7,9 +7,15 @@
     <h2>Meet ups in your local area</h2>
     <br />
     <h2>Resources for the help you need</h2>
-    <br />
-    <%= link_to 'Join our community', new_user_registration_path , class: 'btn btn-success' %>
-    <br /><br />
+    <% if user_signed_in? %>
+      <br />
+      <h2>Feel free to explore!</h2>
+      <br /><br />
+    <% else %>
+      <br />
+      <%= link_to 'Join our community', new_user_registration_path , class: 'btn btn-success' %>
+      <br /><br />
+    <% end %>
   </div>
 </div>
 
