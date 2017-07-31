@@ -13,9 +13,21 @@
   padding: 20px;
 }
 
+.box {
+  background-color: rgba(0,0,0,0.5);
+  margin: 10px auto;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin:0;
   padding:0;
+}
+
+.letters {
+  color: #FFFFFF;
 }
 
 .navbar {
@@ -66,4 +78,16 @@ blockquote:before {
 
 blockquote p {
   display: inline;
+}
+
+.feature {
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.image_1 {
+  background: image_url('bloom.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
