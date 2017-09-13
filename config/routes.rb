@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     get 'career', to: 'static_pages#career'
     get 'about', to: 'static_pages#about'
     get 'faq', to: 'static_pages#faq'
+    get 'contact', to: 'static_pages#contact'
 end
