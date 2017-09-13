@@ -1,0 +1,15 @@
+<br />
+
+<div class="booyah-box col-10 offset-1 text-center">
+  <h1>Contact Us</h1>
+
+  <%= form_for @message, url: create_message_url do |f| %>
+    <%= notice %>
+    <%= @message.errors.full_messages.join(', ') %>
+
+    <%= f.text_field @user.email %>
+    <%= f.email_field :email, placeholder: 'email' %>
+    <%= f.text_area :body, placeholder: 'body' %>
+    <%= f.submit 'Send' %>
+  <% end %>
+</div>
