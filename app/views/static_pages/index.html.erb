@@ -31,14 +31,7 @@
   <div class="col-12 col-sm feature">
     <h3 class="letters">Find local stores</h3>
     <br />
-    <p>It's always hard to find local places that sell carnivorous plants. It is always best if you can inspect the product yourself before purchasing. Our community made database of local Texas stores helps direct you to where you need to go.</p>
-    <%= will_paginate @shops %>
-    <% @shops.each do |shop| %>
-      <div class="booyah-box col-10 offset-1">
-        <h1><%= link_to shop.name, shop_path(shop) %></h1><br />
-        <i><%= shop.address %></i><br /><br />
-      </div>
-    <% end %>
+    <p>It's always hard to find local places that sell carnivorous plants. It is always best if you can inspect the product yourself before purchasing. Our community is making an ever growing database of local Texas stores to help direct you to the closets nursery near you.</p>
   </div>
 
   <div class="col-12 col-sm">
